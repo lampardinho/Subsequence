@@ -5,43 +5,33 @@ import java.lang.Object;
 import java.util.Arrays;
 
 /**
- *
- * @author Prigodisch Nikolay
+ * @author Prigodich Nikolay
  */
-public class SubsequenceImpl implements Subsequence{
+public class SubsequenceImpl implements Subsequence {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
         Subsequence s = new SubsequenceImpl();
-        boolean b = s.find(Arrays.asList("AB", "BC"), Arrays.asList("BD", "AB", "ABC",  "BC"));
+        boolean b = s.find(Arrays.asList("AB", "AB"), Arrays.asList("AB", "AB"));
         System.out.println(b);
     }
-    
-    
-    /**
-     * 
-     * @return 
-     */
+
+
     @Override
-    public boolean find(List x, List y){
-        if (x.size()<y.size()){
-            int j=0;
-            try {
-            for (int i=0; i<x.size(); i++){
-                while (y.get(j)!=x.get(i)){
-                    j++;
-                }
-                if (y.get(j)==x.get(i)){
-                    continue;
-                } else {                    
-                    return false;
-                }
+    public boolean find(List x, List y)
+    {
+        int j = 0;
+        for (int i = 0; i < x.size(); i++)
+        {
+            while (j < y.size() && y.get(j) != x.get(i)) j++;
+
+            if (j < y.size() && y.get(j) == x.get(i))
+            {
+                j++;
+                continue;
             }
-            return true;
-        } catch (ArrayIndexOutOfBoundsException e){}
-}
-    return false;
+            else return false;
+        }
+        return true;
     }
 }
