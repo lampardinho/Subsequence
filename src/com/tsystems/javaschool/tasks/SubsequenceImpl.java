@@ -10,9 +10,10 @@ import java.util.Arrays;
 public class SubsequenceImpl implements Subsequence {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Subsequence s = new SubsequenceImpl();
-        boolean b = s.find(Arrays.asList("AB", "AB"), Arrays.asList("AB", "AB"));
+        boolean b = s.find(Arrays.asList("A", "B", "C", "D"), Arrays.asList("BD", "A", "ABC", "B", "M", "D", "M", "C", "DC", "D"));
         System.out.println(b);
     }
 
@@ -21,17 +22,17 @@ public class SubsequenceImpl implements Subsequence {
     public boolean find(List x, List y)
     {
         int j = 0;
-        for (int i = 0; i < x.size(); i++)
+        for (Object obj1 : x)
         {
-            while (j < y.size() && y.get(j) != x.get(i)) j++;
-
-            if (j < y.size() && y.get(j) == x.get(i))
-            {
+            while (j < y.size() && !y.get(j).equals(obj1))
                 j++;
-                continue;
-            }
-            else return false;
+
+            if (j < y.size() && y.get(j).equals(obj1))
+                j++;
+            else
+                return false;
         }
         return true;
     }
+
 }
