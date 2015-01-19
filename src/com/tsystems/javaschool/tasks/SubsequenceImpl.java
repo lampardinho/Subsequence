@@ -17,7 +17,13 @@ public class SubsequenceImpl implements Subsequence {
         System.out.println(b);
     }
 
-
+    /**
+     * iterates through list x
+     * and tries to find each value in list y
+     *
+     * if it doesn't find one
+     * then returns false
+     */
     @Override
     public boolean find(List x, List y)
     {
